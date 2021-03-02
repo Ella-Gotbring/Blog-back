@@ -1,0 +1,24 @@
+{
+  "name": "blog-backend",
+  "version": "1.0.0",
+  "description": "\"# Blog-back\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ella-Gotbring/Blog-back.git"
+  },
+  "author": "Ella",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ella-Gotbring/Blog-back/issues"
+  },
+  "homepage": "https://github.com/Ella-Gotbring/Blog-back#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1"
+  }
+}
