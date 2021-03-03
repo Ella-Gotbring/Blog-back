@@ -1,9 +1,18 @@
-const http = require('http');
 
-let app = http.createServer((req,res) => {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Hello world!');
-});
+const express = require('express')
+const app = express()
 
-app.listen(3000, '127.0.0.1');
-console.log('Node server started');
+app.set("view engine", "ejs")
+
+app.use(express.static('public'))
+app.use(express.urlencoded({extended:true}))
+
+app.get('/', (req,res) => {
+    res.render("index")
+})
+
+app.get('/reg', (req,res) => {
+    res.render("reg")
+})
+
+app.listen(8080, () => console.log("started node server"))
