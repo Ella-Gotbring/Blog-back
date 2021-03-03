@@ -1,23 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-</head>
-<body>
-    <header>
-        <h2>Login here!</h2>
-    </header>
+<%- include ('../partials/head.ejs') %> <%- include
+('../partials/navigation.ejs') %>
+<div class="container">
+  <main class="wrapper">
+    <form id="login-form">
+      <h2>Login here!</h2>
+      <input type="email" name="email" id="email" placeholder="enter email" />
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="enter password"
+      />
+      <button>Login</button>
+    </form>
+  </main>
+</div>
 
-    <main>
-        <form action="" method="POST">
-            <input type="text" name="email">
-            <input type="text" name="password">
-            <input type="submit" value="Login">
-        </form>
-
-    </main>
-    
-</body>
-</html>
+<%- include ('../partials/footer.ejs') %>
