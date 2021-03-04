@@ -11,7 +11,6 @@ router.get("/reg", (req,res) => res.render("page/reg"));
 router.get("/landing", auth, (req,res) => 
 res.render("pages/landing", {user:req.user}));
 
-
 router.get("/addPost", auth, (req,res) =>
 res.render("pages/addPost", { user:req.user}));
 

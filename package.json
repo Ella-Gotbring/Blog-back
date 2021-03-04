@@ -17,8 +17,16 @@
   },
   "homepage": "https://github.com/Ella-Gotbring/Blog-back#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
     "ejs": "^3.1.6",
+    "env": "0.0.2",
     "express": "^4.17.1",
-    "express-session": "^1.17.1"
+    "express-session": "^1.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "nedb": "^1.8.0",
+    "nedb-promise": "^2.0.1",
+    "uuidv4": "^6.2.6"
   }
 }
