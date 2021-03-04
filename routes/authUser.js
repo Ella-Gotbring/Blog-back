@@ -2,13 +2,14 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 module.exports = {
-    async verify(req, res, next){
-        const token = req.cookies.verify;if(!token){
+    async auth(req, res, next){
+        const token = req.cookies.auth;
+        if(!token){
             return false;
         }else{
             try{
-                const auth = jwt.auth(token, process.env.SECRET);
-                req.user = auth;
+                const verify = jwt.verify(token, process.env.SECRET);
+                req.user = verify;
             }catch (error){
                 console.log(error);
             }
