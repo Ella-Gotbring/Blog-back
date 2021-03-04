@@ -36,7 +36,7 @@ module.exports = {
         const matchPass = await bcrypt.compare(body.password, user.password);
         if(!matchPass) return;
         const token = jwt.sign({
-            userID: user_id,
+            userID: user._id,
             name: user.name,
             role: user.role,
         },
