@@ -7,7 +7,6 @@ require("dotenv").config();
 module.exports = {
     async register(body) {
         if (
-            body.name == "" ||
             body.email == "" ||
             body.password == "" ||
             body.repeatPassword == "" 
@@ -16,13 +15,12 @@ module.exports = {
         const user = await users.findOne({email: body.email});
         if(user)return;
         const newUser = await users.insert({
-            name: body.name,
             email: body.email,
+            password: await bcrypt.hash(body.password, 10),
             role: "admin",
             posts:[],
         });
         return {
-            name: newUser.name,
             email: newUser.email,
             role: newUser.role,
             posts: newUser.posts,
@@ -45,4 +43,4 @@ module.exports = {
         return token;
     },
 
-}
+};

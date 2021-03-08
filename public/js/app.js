@@ -1,18 +1,22 @@
-document.querySelector("form").forEach((item) => {
-    if(item.id === "formLogin") item.addEventListener("submit");
+document.querySelectorAll("form").forEach((item) => {
+    if(item.id === "formLogin") item.addEventListener("submit", userLogin);
 
-    if(item.id === "formSignup") item.addEventListener("submit");
+    if(item.id === "formSignup") item.addEventListener("submit", userReg);
+
+    if(item.id === "postForm") item.addEventListener("submit", createPost);
 });
 
-function userLogin(){
-    let email = target.querySelector("#email").value;
-    let password = target.querySelector("#password").value;
+function userLogin(e){
+    e.preventDefault();
+
+    let email = e.target.querySelector("#email").value;
+    let password = e.target.querySelector("#password").value;
 
     const input = {
         email,
         password,
     };
-    if(input.email == "" || input.password == ""){
+    if (input.email == "" || input.password == "") {
         console.log("fill in input fields");
         return;
     }
@@ -22,15 +26,16 @@ function userLogin(){
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(input)
-    })
+        body: JSON.stringify(input),
+    }).then(() => (location.href = "/landing"));
 
 }
 
-function userReg(){
-    const email = target.querySelector("#email").value;
-    const password = target.querySelector("#password").value;
-    const repeatPassword = target.querySelector("#repeatPassword").value;
+function userReg(e){
+    e.preventDefault();
+    const email = e.target.querySelector("#email").value;
+    const password = e.target.querySelector("#password").value;
+    const repeatPassword = e.target.querySelector("#repeatPassword").value;
 
     const input = {
         email,
@@ -42,7 +47,7 @@ function userReg(){
         input.email == "" || 
         input.password == "" || 
         input.repeatPassword == ""
-    ){
+    ) {
         console.log("fill in input fields")
         return;
     } 
@@ -52,26 +57,32 @@ function userReg(){
         headers: {
             "Content-Type": "application/json",
         },
-        bosy: JSON.stringify(input),
+        body: JSON.stringify(input),
     })
-
-    function createPost(){
-        let title = target.querySelector("#title").value;
-        let text = target.querySelector("#text").value;
+    .then((res) => res.json())
+    .then(() => (location.href = "/index"));
+}
+    function createPost(e) {
+        e.preventDefault();
+        let title = e.target.querySelector("#title").value;
+        let text = e.target.querySelector("#text").value;
 
         const input = {
             title,
             text,
         };
+
         if(input.title == "" || input.text == ""){
             console.log("fill in input fields");
             return;
         }
+        fetch("/api/posts", {
+            method: "post",
+            headers:{
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(input),
+        })
+        .then((res) => res.json())
+        .then((data) => (location.href = "/api/posts"));
     }
-
-
-
-
-
-
-}

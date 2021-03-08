@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { auth, register } = require("../models/Users");
 
-router.post("/api/auth", async (req,res) => {
+router.post("/api/auth", async (req, res) => {
     res.clearCookie("auth");
     const token = await auth(req.body);
     if (token){
@@ -17,7 +17,7 @@ router.post("/api/auth", async (req,res) => {
 
 router.post("/api/register", async (req,res) => {
     const user = await register(req.body);
-    if(user){
+    if(user) {
         res.json(user);
         return;
     }
