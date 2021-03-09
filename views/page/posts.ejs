@@ -1,4 +1,25 @@
-<%- include('../partials/head.ejs') %> 
+<%- include('../partials/head.ejs') %>
+<ul>
+  <li><a href="/landing">Landing page</a></li>
+  <li><a href="/logout">Logout</a></li>
+</ul>
+<div class="container">
+  <main class="wrapper">
+    <% if(posts.length > 0){ %>
+    <h3>all posts</h3>
+    <div class="blog">
+      <% posts.forEach((post, index) => { <%
+      <a href="/api/posts <%= post.id %>">
+        #<%= index + 1 %> <% post.title %>
+      </a>
 
+      <% }) %>
+    </div>
+    <% { else } %>
+    <h3>no post</h3>
 
-<%- include('../partials/footer.ejs') %> 
+    <% } %>
+  </main>
+</div>
+
+<%- include('../partials/footer.ejs') %>
