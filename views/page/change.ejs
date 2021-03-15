@@ -1,0 +1,28 @@
+<%- include('../partials/head.ejs') %>
+<ul>
+  <li><a href="/logout">logout</a></li>
+  <li><a href="/landing">go back</a></li>
+</ul>
+<div class="container">
+  <main class="wrapper">
+    <form action="/api/posts/<%= blog._id %>" method="post">
+      <input
+        type="text"
+        name="title"
+        placeholder="change title"
+        id="title"
+        value="<%= blog.title %>"
+      />
+      <textarea name="content" id="text" placeholder="write something..">
+                <%= blog.content %> 
+            </textarea>
+      <button>Save changes</button>
+    </form>
+    <form action="/api/posts/delete/<%= blog._id %>" method="post">
+      <button>
+        <span class="lnr lnr-trash"></span>
+      </button>
+    </form>
+  </main>
+</div>
+<%- include('../partials/footer.ejs') %>

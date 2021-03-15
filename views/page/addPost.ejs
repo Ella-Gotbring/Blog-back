@@ -1,19 +1,30 @@
+<%- include('../partials/head.ejs') %>
+<nav class="navbar">
+  <h3>
+    <a href="/landing">Go back
+  </h3>
+  <ul>
+    <li><a href="/logout">Logout</a></li>
+  </ul>
+</nav>
 <div class="container">
-  <main class="wrapper">
-    <form id="post-form">
-      <input type="text" name="title" id="title" placeholder="add a title" />
-
+  <main class="content">
+    <form id="postForm">
+      <input
+        type="text"
+        name="title"
+        id="title"
+        placeholder="title for your post"
+      />
+      <br>
+      <br>
       <textarea
-        name="text"
-        id="text"
-        cols="30"
-        rows="10"
-        placeholder="Write something..."
+        name="content"
+        id="content"
+        placeholder="write something.."
       ></textarea>
-
-      <button>Add post</button>
+      <button>Create</button>
     </form>
   </main>
 </div>
-
 <%- include('../partials/footer.ejs') %>

@@ -7,82 +7,86 @@ document.querySelectorAll("form").forEach((item) => {
 });
 
 function userLogin(e){
-    e.preventDefault();
+   e.preventDefault();
 
-    let email = e.target.querySelector("#email").value;
-    let password = e.target.querySelector("#password").value;
+  let email = e.target.querySelector("#email").value;
+  let password = e.target.querySelector("#password").value;
 
-    const input = {
-        email,
-        password,
-    };
-    if (input.email == "" || input.password == "") {
-        console.log("fill in input fields");
-        return;
-    }
+  const input = {
+    email,
+    password,
+  };
+  if (input.email == "" || input.password == "") {
+    console.log("you have to fill in fields");
+    return;
+  }
 
-    fetch("/api/auth", {
-        method: "post",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(input),
-    }).then(() => (location.href = "/landing"));
-
+  fetch("/api/auth", {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(input),
+  }).then(() => (location.href = "/landing"));
 }
 
 function userReg(e){
     e.preventDefault();
-    const email = e.target.querySelector("#email").value;
-    const password = e.target.querySelector("#password").value;
-    const repeatPassword = e.target.querySelector("#repeatPassword").value;
+  
+  const email = e.target.querySelector("#email").value;
+  const password = e.target.querySelector("#password").value;
+  const repeatPassword = e.target.querySelector("#repeatPassword").value;
 
-    const input = {
-        email,
-        password,
-        repeatPassword,
-    };
+  const input = {
+   
+    email,
+    password,
+    repeatPassword,
+  };
+  if (
+    
+    input.email == "" ||
+    input.password == "" ||
+    input.repeatPassword == ""
+  ) {
+    console.log("you have to fill in fields");
+    return;
+  }
 
-    if(
-        input.email == "" || 
-        input.password == "" || 
-        input.repeatPassword == ""
-    ) {
-        console.log("fill in input fields")
-        return;
-    } 
-
-    fetch("/api/register", {
-        method: "post",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(input),
-    })
+  fetch("/api/register", {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(input),
+  })
     .then((res) => res.json())
-    .then(() => (location.href = "/index"));
+    .then(() => (location.href = "/reg"));
 }
+
     function createPost(e) {
-        e.preventDefault();
-        let title = e.target.querySelector("#title").value;
-        let text = e.target.querySelector("#text").value;
+    e.preventDefault();
 
-        const input = {
-            title,
-            text,
-        };
+  let title = e.target.querySelector("#title").value;
+  let content = e.target.querySelector("#content").value;
 
-        if(input.title == "" || input.text == ""){
-            console.log("fill in input fields");
-            return;
-        }
-        fetch("/api/posts", {
-            method: "post",
-            headers:{
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(input),
-        })
-        .then((res) => res.json())
-        .then((data) => (location.href = "/api/posts"));
-    }
+  const input = {
+    title,
+    content,
+  };
+  if (input.title == "" || input.content == "") {
+    console.log("you have to fill in fields");
+    return;
+  }
+  fetch("/api/posts", {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(input),
+  })
+    .then((res) => res.json())
+    .then((data) => (location.href = "/api/posts"));
+}
+
+       

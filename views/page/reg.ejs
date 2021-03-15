@@ -1,23 +1,27 @@
-<%- include ('../partials/head.ejs') %> <%- include
-('../partials/navigation.ejs') %>
+<%- include ('../partials/navigation.ejs') %>
 
 <div class="container">
   <main class="wrapper">
     <form id="formSignup">
       <h2>Regsiter here!</h2>
 
-      <input type="email" name="email" id="email" placeholder="enter email" />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Enter your e-mail"
+      />
       <input
         type="password"
         id="password"
         name="password"
-        placeholder="enter password"
+        placeholder="Enter a password"
       />
       <input
         type="password"
         id="repeatPassword"
         name="repeatPassword"
-        placeholder="repeat password"
+        placeholder="Verify password"
       />
       <button>Register</button>
     </form>
